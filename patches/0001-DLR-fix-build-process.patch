@@ -1,0 +1,58 @@
+From 64ef36edee14a19818e36f93e28ddb542eef92f5 Mon Sep 17 00:00:00 2001
+From: Dawid Pietrykowski <dpietrykowski@antmicro.com>
+Date: Thu, 9 Jan 2025 11:12:21 +0100
+Subject: [PATCH] Modify csprojs to fix build process
+
+---
+ Src/Microsoft.Dynamic/Microsoft.Dynamic.csproj     | 1 +
+ Src/Microsoft.Scripting/Microsoft.Scripting.csproj | 1 +
+ Tests/ClrAssembly/Src/loadtypesample.cs            | 2 --
+ 3 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Src/Microsoft.Dynamic/Microsoft.Dynamic.csproj b/Src/Microsoft.Dynamic/Microsoft.Dynamic.csproj
+index 26cd43d..eb15097 100644
+--- a/Src/Microsoft.Dynamic/Microsoft.Dynamic.csproj
++++ b/Src/Microsoft.Dynamic/Microsoft.Dynamic.csproj
+@@ -6,6 +6,7 @@
+     <BaseAddress>859832320</BaseAddress>
+     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
++    <EnableNETAnalyzers>false</EnableNETAnalyzers>
+   </PropertyGroup>
+ 
+   <ItemGroup>
+diff --git a/Src/Microsoft.Scripting/Microsoft.Scripting.csproj b/Src/Microsoft.Scripting/Microsoft.Scripting.csproj
+index ababa2a..8d88446 100644
+--- a/Src/Microsoft.Scripting/Microsoft.Scripting.csproj
++++ b/Src/Microsoft.Scripting/Microsoft.Scripting.csproj
+@@ -4,6 +4,7 @@
+     <TargetFrameworks>net45;netstandard2.0;netcoreapp3.1</TargetFrameworks>
+     <BaseAddress>857735168</BaseAddress>
+     <GenerateDocumentationFile>true</GenerateDocumentationFile>
++    <EnableNETAnalyzers>false</EnableNETAnalyzers>
+   </PropertyGroup>
+ 
+   <ItemGroup Condition=" '$(IsFullFramework)' == 'true' ">
+diff --git a/Tests/ClrAssembly/Src/loadtypesample.cs b/Tests/ClrAssembly/Src/loadtypesample.cs
+index 0ea161f..5eb43b4 100644
+--- a/Tests/ClrAssembly/Src/loadtypesample.cs
++++ b/Tests/ClrAssembly/Src/loadtypesample.cs
+@@ -80,7 +80,6 @@ namespace except { public class A { } }
+ // builtin-func 
+ namespace abs { public class A { } }
+ namespace type { public class A { } }
+-namespace file { public class A { } }
+ 
+ // builtin-type
+ namespace complex { public class A { } }
+@@ -107,7 +106,6 @@ namespace NSwInterestingClassName {
+ 
+     public class abs { public static int A = 10; }
+     public class type { public static int A = 10; }
+-    public class file { public static int A = 10;}
+ 
+     public class complex { public static int A = 10; }
+     public class StandardError { public static int A = 10;}
+-- 
+2.47.1
+

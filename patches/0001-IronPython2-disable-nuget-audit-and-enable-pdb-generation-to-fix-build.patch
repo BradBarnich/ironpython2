@@ -1,0 +1,65 @@
+From c1c1e1a0366dd74fa26033ef10befe2ae2eb2cf5 Mon Sep 17 00:00:00 2001
+From: Dawid Pietrykowski <dpietrykowski@antmicro.com>
+Date: Wed, 8 Jan 2025 15:56:28 +0100
+Subject: [PATCH] Disable nuget audit and enable pdb generation to fix build
+ process
+
+---
+ NuGet.config                                         | 2 +-
+ Src/IronPython/IronPython.csproj                     | 1 +
+ Src/IronPythonConsoleAny/IronPythonConsoleAny.csproj | 1 +
+ Src/IronPythonTest/IronPythonTest.csproj             | 1 +
+ 4 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/NuGet.config b/NuGet.config
+index a697dc8e0..b486c587e 100644
+--- a/NuGet.config
++++ b/NuGet.config
+@@ -4,7 +4,7 @@
+     <add key="globalPackagesFolder" value="./packages" />
+   </config>
+   <packageSources>
+-    <add key="nuget.org" value="https://api.nuget.org/api/v3/index.json" />
++    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+     <add key="nunit.myget.org" value="https://www.myget.org/F/nunit/api/v3/index.json" />
+   </packageSources>
+ </configuration>
+diff --git a/Src/IronPython/IronPython.csproj b/Src/IronPython/IronPython.csproj
+index f9749b961..19adf37e9 100644
+--- a/Src/IronPython/IronPython.csproj
++++ b/Src/IronPython/IronPython.csproj
+@@ -5,6 +5,7 @@
+     <BaseAddress>879755264</BaseAddress>
+     <CodeAnalysisRuleSet>..\..\IronPython.ruleset</CodeAnalysisRuleSet>
+     <GenerateDocumentationFile>true</GenerateDocumentationFile>
++    <DebugType>portable</DebugType>
+   </PropertyGroup>
+ 
+   <ItemGroup>
+diff --git a/Src/IronPythonConsoleAny/IronPythonConsoleAny.csproj b/Src/IronPythonConsoleAny/IronPythonConsoleAny.csproj
+index ae7a416c7..7ea247a5f 100644
+--- a/Src/IronPythonConsoleAny/IronPythonConsoleAny.csproj
++++ b/Src/IronPythonConsoleAny/IronPythonConsoleAny.csproj
+@@ -9,6 +9,7 @@
+     <CodeAnalysisRuleSet>..\..\IronPython.ruleset</CodeAnalysisRuleSet>
+     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
++    <NuGetAudit>false</NuGetAudit>
+   </PropertyGroup>
+ 
+   <ItemGroup>
+diff --git a/Src/IronPythonTest/IronPythonTest.csproj b/Src/IronPythonTest/IronPythonTest.csproj
+index f1e15ea8a..3eda5c346 100644
+--- a/Src/IronPythonTest/IronPythonTest.csproj
++++ b/Src/IronPythonTest/IronPythonTest.csproj
+@@ -2,6 +2,7 @@
+ 
+   <PropertyGroup>
+     <TargetFrameworks>net45;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
++    <NuGetAudit>false</NuGetAudit>
+   </PropertyGroup>
+ 
+   <ItemGroup>
+-- 
+2.47.1
+
