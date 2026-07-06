@@ -4,31 +4,12 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-        - os: windows-latest
-          artifact-name: packages-windows
-        - os: ubuntu-22.04
-          artifact-name: packages-linux
-        - os: macos-13
-          artifact-name: packages-macos
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v7
       with:
         submodules: true
-
-    - name: Install tools
-      if: runner.os == 'Linux'
-      run: sudo apt-get update && sudo apt-get -yq install mono-complete dos2unix fakeroot libunwind8
-
-    - name: Install tools
-      if: runner.os == 'macOS'
-      run: brew install mono dos2unix
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
@@ -52,7 +33,7 @@ jobs:
 
     - uses: actions/upload-artifact@v7
       with:
-        name: ${{ matrix.artifact-name }}
+        name: packages-windows
         path: Package/Release/Packages
 
     - name: Test (net462)
