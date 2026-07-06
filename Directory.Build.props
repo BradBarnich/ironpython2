@@ -103,14 +103,14 @@
     <BaseOutputPath>$(RootDir)bin\$(Configuration)</BaseOutputPath>
     <OutputPath>$(BaseOutputPath)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsNotAsErrors>618;429;219;1717;162;414</WarningsNotAsErrors>
+    <WarningsNotAsErrors>618;429;219;1717;162;414;672;SYSLIB0001;SYSLIB0004;SYSLIB0006;SYSLIB0011;SYSLIB0021;SYSLIB0028;SYSLIB0039;SYSLIB0050;SYSLIB0051;SYSLIB0057;SYSLIB0058;SYSLIB1054;SYSLIB1096</WarningsNotAsErrors>
     <NoWarn>1591;1584;1574;1685;1573</NoWarn>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
     <RunCodeAnalysis Condition="'$(Configuration)' == 'FxCop'">true</RunCodeAnalysis>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>13</LangVersion>
   </PropertyGroup>
 
   <!-- Release -->

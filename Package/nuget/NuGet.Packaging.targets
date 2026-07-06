@@ -3,7 +3,7 @@
   <ItemGroup>
     <Package Include="IronPython">
       <NuSpecDir>$(RootDir)Package\nuget</NuSpecDir>
-      <NuSpecArguments>-Symbols -SymbolPackageFormat snupkg</NuSpecArguments>
+      <NuSpecArguments></NuSpecArguments>
     </Package>
     <Package Include="IronPython.StdLib">
       <NuSpecDir>$(RootDir)Package\nuget</NuSpecDir>

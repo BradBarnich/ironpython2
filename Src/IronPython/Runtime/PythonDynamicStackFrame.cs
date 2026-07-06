@@ -18,7 +18,10 @@ namespace IronPython.Runtime {
     /// function code object which is needed to build frame objects from.
     /// </summary>
     [Serializable]
-    sealed class PythonDynamicStackFrame : DynamicStackFrame, ISerializable 
+    sealed class PythonDynamicStackFrame : DynamicStackFrame
+#if FEATURE_SERIALIZATION
+        , ISerializable
+#endif
     {
         private readonly CodeContext _context;
         private readonly FunctionCode _code;
