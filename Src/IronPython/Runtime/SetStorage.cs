@@ -32,7 +32,11 @@ namespace IronPython.Runtime {
     /// occurred either before or after the mutation.
     /// </summary>
     [Serializable]
-    internal sealed class SetStorage : IEnumerable, IEnumerable<object>, ISerializable, IDeserializationCallback {
+    internal sealed class SetStorage : IEnumerable, IEnumerable<object>
+#if FEATURE_SERIALIZATION
+        , ISerializable, IDeserializationCallback
+#endif
+    {
         internal Bucket[] _buckets;
         internal int _count;
         private int _version;

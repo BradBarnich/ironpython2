@@ -110,7 +110,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
     <RunCodeAnalysis Condition="'$(Configuration)' == 'FxCop'">true</RunCodeAnalysis>
-    <LangVersion>10</LangVersion>
+    <LangVersion>13</LangVersion>
   </PropertyGroup>
 
   <!-- Release -->

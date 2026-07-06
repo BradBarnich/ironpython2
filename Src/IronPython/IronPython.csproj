@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net8.0;net10.0</TargetFrameworks>
+    <TargetFrameworks>net462;net8.0;net10.0</TargetFrameworks>
     <BaseAddress>879755264</BaseAddress>
     <CodeAnalysisRuleSet>..\..\IronPython.ruleset</CodeAnalysisRuleSet>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DLR\Src\Microsoft.Dynamic\Microsoft.Dynamic.csproj" />
+    <ProjectReference Include="..\DLR\src\core\Microsoft.Dynamic\Microsoft.Dynamic.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -33,7 +33,9 @@ namespace IronPython.Runtime.Types {
 #if FEATURE_CUSTOM_TYPE_DESCRIPTOR
         ICustomTypeDescriptor,
 #endif
+#if FEATURE_SERIALIZATION
         ISerializable,
+#endif
         IWeakReferenceable,
         IDynamicMetaObjectProvider, 
         IPythonMembersList,

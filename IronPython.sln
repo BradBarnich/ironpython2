@@ -39,7 +39,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{17737ACB-40C6-41A6-83DA-3203A4DCEC19}"
 	ProjectSection(SolutionItems) = preProject
 		Build\After.targets = Build\After.targets
-		Build\net45.props = Build\net45.props
+		Build\net462.props = Build\net462.props
 		Build\net8.0.props = Build\net8.0.props
 		Build\net8.0-windows.props = Build\net8.0-windows.props
 		Build\net10.0.props = Build\net10.0.props
@@ -53,15 +53,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IronPythonCompiler", "Src\I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLR", "DLR", "{AC38EFB1-820D-4E90-BF40-BEF3AC825542}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Dynamic", "Src\DLR\Src\Microsoft.Dynamic\Microsoft.Dynamic.csproj", "{EB66B766-6354-4208-A3D4-AACBDCB5C3B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Dynamic", "Src\DLR\src\core\Microsoft.Dynamic\Microsoft.Dynamic.csproj", "{EB66B766-6354-4208-A3D4-AACBDCB5C3B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Scripting", "Src\DLR\Src\Microsoft.Scripting\Microsoft.Scripting.csproj", "{02FF0909-F5AD-48CF-A86A-345E721B7E40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Scripting", "Src\DLR\src\core\Microsoft.Scripting\Microsoft.Scripting.csproj", "{02FF0909-F5AD-48CF-A86A-345E721B7E40}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Scripting.Metadata", "Src\DLR\Src\Microsoft.Scripting.Metadata\Microsoft.Scripting.Metadata.csproj", "{ACDD9B9E-8FE6-439C-9521-1CCBA47F6143}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Scripting.Metadata", "Src\DLR\src\core\Microsoft.Scripting.Metadata\Microsoft.Scripting.Metadata.csproj", "{ACDD9B9E-8FE6-439C-9521-1CCBA47F6143}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{60836ADE-CAB7-4587-B6FB-8C4FEB872752}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClrAssembly", "Src\DLR\Tests\ClrAssembly\ClrAssembly.csproj", "{BEE737B9-18D5-48D9-8672-9A896213C98B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClrAssembly", "Src\DLR\tests\ClrAssembly\ClrAssembly.csproj", "{BEE737B9-18D5-48D9-8672-9A896213C98B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Package", "Package", "{63388816-0ACA-4A18-A551-C3F93062C9E9}"
 EndProject

@@ -15,7 +15,6 @@
     <BuildSysDir>$(RootDir)Build</BuildSysDir>
     <NuGetAudit>false</NuGetAudit>
     <EnableNETAnalyzers>false</EnableNETAnalyzers>
-    <LangVersion>10</LangVersion>
     <WarningsNotAsErrors>618;429;219;1717;162;414;672;SYSLIB0001;SYSLIB0004;SYSLIB0006;SYSLIB0011;SYSLIB0021;SYSLIB0028;SYSLIB0039;SYSLIB0050;SYSLIB0051;SYSLIB0057;SYSLIB0058;SYSLIB1054;SYSLIB1096</WarningsNotAsErrors>
   </PropertyGroup>
 
@@ -40,7 +39,6 @@
       Mono=$(Mono);
       NuGetAudit=$(NuGetAudit);
       EnableNETAnalyzers=$(EnableNETAnalyzers);
-      LangVersion=$(LangVersion);
       WarningsNotAsErrors=$(WarningsNotAsErrors);
     </BuildProperties>
   </PropertyGroup>

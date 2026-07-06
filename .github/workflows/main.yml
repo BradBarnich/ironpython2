@@ -55,8 +55,8 @@ jobs:
         name: ${{ matrix.artifact-name }}
         path: Package/Release/Packages
 
-    - name: Test (net45)
-      run: ./make.ps1 -frameworks net45 test-all
+    - name: Test (net462)
+      run: ./make.ps1 -frameworks net462 test-all
       shell: pwsh
 
     - name: Test (net8.0)
