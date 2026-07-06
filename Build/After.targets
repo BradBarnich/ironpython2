@@ -4,8 +4,8 @@
     <When Condition=" '$(OutputType)' == 'Library' ">
       <ItemGroup>
         <StageItem Include="$(TargetPath)" />
-        <StageItem Include="$(DocumentationFile)" />
-        <StageItem Include="$(PdbFile)" />
+        <StageItem Include="$(DocumentationFile)" Condition=" Exists('$(DocumentationFile)') " />
+        <StageItem Include="$(PdbFile)" Condition=" Exists('$(PdbFile)') " />
         <StageItem Include="$(TargetDir)$(TargetName).xml" Condition=" Exists('$(TargetDir)$(TargetName).xml') " />
         <StageItem Include="$(TargetDir)$(TargetName).pdb" Condition=" Exists('$(TargetDir)$(TargetName).pdb') " />
       </ItemGroup>
@@ -39,13 +39,15 @@
           Outputs="$(UnsignedMainStaged)"
           Condition=" '$(Staging)' == 'true' ">
     <Error Text="StageDir is not set." Condition=" '$(StageDir)' == '' " />
-    <Copy SourceFiles="$(UnsignedItems)" DestinationFolder="$(MainStageDir)" />
+    <ItemGroup>
+      <ExistingMainStageItem Include="@(StageItem)" Condition=" Exists('%(StageItem.FullPath)') " />
+    </ItemGroup>
+    <Copy SourceFiles="@(ExistingMainStageItem)" DestinationFolder="$(MainStageDir)" />
   </Target>
 
   <Target Name="_StoreInDLLs" Condition=" '$(StoreInDLLs)' == 'true' ">
-    <Move SourceFiles="@(StageItem)" DestinationFolder="$(TargetDir)\%(StageItem.RecursiveDir)\DLLs" />
+    <Move SourceFiles="$(TargetPath)" DestinationFolder="$(TargetDir)\DLLs" Condition=" Exists('$(TargetPath)') " />
   </Target>
 
   <Target Name="Stage" DependsOnTargets="_LateStage;_MainStage;_StoreInDLLs" />
 </Project>
-

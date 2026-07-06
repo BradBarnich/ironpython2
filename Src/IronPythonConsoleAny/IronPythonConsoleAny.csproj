@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net45;net8.0;net10.0</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <RootNamespace>IronPythonConsole</RootNamespace>
     <AssemblyName>ipy</AssemblyName>
@@ -25,7 +25,7 @@
     <Compile Include="..\IronPythonConsole\Console.cs" Link="Console.cs" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1' OR ('$(IsFullFramework)' != 'true' AND $([MSBuild]::IsOSPlatform('OSX'))) ">
+  <ItemGroup Condition=" '$(IsFullFramework)' != 'true' ">
     <Content Include="ipy.bat" Condition=" '$(OS)' == 'Windows_NT' ">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -34,7 +34,7 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1' OR ('$(IsFullFramework)' != 'true' AND $([MSBuild]::IsOSPlatform('OSX'))) ">
+  <ItemGroup Condition=" '$(IsFullFramework)' != 'true' ">
     <StageItem Include="ipy.bat" Condition=" '$(OS)' == 'Windows_NT' "/>
     <StageItem Include="ipy.sh" Condition=" '$(OS)' == 'Unix' "/>
   </ItemGroup>

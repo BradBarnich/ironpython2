@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net45;net8.0;net10.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,7 +39,7 @@
   <Target Name="CopyRowanTestFiles" AfterTargets="AfterBuild">
     <ItemGroup>
       <RowanTestFiles Include="..\DLR\bin\$(Configuration)\$(TargetFramework)\rowantest.*.dll" Condition=" '$(TargetFramework)' == 'net45' " />
-      <RowanTestFiles Include="..\DLR\bin\$(Configuration)\netstandard2.0\rowantest.*.dll" Condition=" '$(TargetFramework)' != 'net45' " />
+      <RowanTestFiles Include="..\DLR\bin\$(Configuration)\$(TargetFramework)\rowantest.*.dll" Condition=" '$(TargetFramework)' != 'net45' " />
     </ItemGroup>
     <Copy SourceFiles="@(RowanTestFiles)" DestinationFolder="$(TargetDir)" />
   </Target>
