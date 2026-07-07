@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -22,7 +21,7 @@ namespace IronPython.Modules {
             where T : HashAlgorithm {
 
         protected T _hasher;
-        private static MethodInfo _memberwiseClone;
+        private readonly List<byte> _data = new List<byte>();
 
         private static readonly Encoding _raw = Encoding.GetEncoding("iso-8859-1");
         private static readonly byte[] _empty = _raw.GetBytes(string.Empty);
@@ -66,6 +65,7 @@ namespace IronPython.Modules {
         internal void update(IList<byte> newBytes) {
             byte[] bytes = newBytes.ToArray();
             lock (_hasher) {
+                _data.AddRange(bytes);
                 _hasher.TransformBlock(bytes, 0, bytes.Length, bytes, 0);
             }
         }
@@ -97,31 +97,30 @@ namespace IronPython.Modules {
         }
 #endif
 
+        protected void CopyStateFrom(HashBase<T> other) {
+            byte[] bytes;
+            lock (other._hasher) {
+                bytes = other._data.ToArray();
+            }
+
+            lock (_hasher) {
+                _data.Clear();
+                _data.AddRange(bytes);
+                _hasher.Initialize();
+                _hasher.TransformBlock(bytes, 0, bytes.Length, bytes, 0);
+            }
+        }
+
         protected T CloneHasher() {
-            T clone = default(T);
-            if (_memberwiseClone == null) {
-                _memberwiseClone = _hasher.GetType().GetMethod("MemberwiseClone", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+            byte[] bytes;
+            Type hasherType;
+            lock (_hasher) {
+                bytes = _data.ToArray();
+                hasherType = _hasher.GetType();
             }
 
-            if (_memberwiseClone != null) {
-                lock (_hasher) {
-                    clone = (T)_memberwiseClone.Invoke(_hasher, new object[0]);
-                }
-            }
-
-            FieldInfo[] fields = _hasher.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-            if(fields != null) {
-                foreach(FieldInfo field in fields) {
-                    if(field.FieldType.IsArray) {
-                        lock (_hasher) {
-                            Array orig = field.GetValue(_hasher) as Array;
-                            if (orig != null) {
-                                field.SetValue(clone, orig.Clone());
-                            }
-                        }
-                    }
-                }
-            }
+            T clone = (T)Activator.CreateInstance(hasherType);
+            clone.TransformBlock(bytes, 0, bytes.Length, bytes, 0);
             return clone;
         }
     }

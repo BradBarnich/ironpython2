@@ -91,7 +91,7 @@ namespace IronPython.Modules {
             [Documentation("copy() -> object (copy of this object)")]
             public override HashBase<SHA1> copy() {
                 sha clone = new sha();
-                clone._hasher = CloneHasher();
+                clone.CopyStateFrom(this);
                 return clone;
             }
         }
