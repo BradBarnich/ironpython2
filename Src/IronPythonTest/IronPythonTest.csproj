@@ -30,13 +30,6 @@
     <EmbeddedResource Include="Cases\StandardCPythonCasesManifest.ini" />
   </ItemGroup>
 
-  <ItemGroup>
-    <!-- ensure ClrAssembly is built before IronPythonTest -->
-    <ProjectReference Include="..\DLR\Tests\ClrAssembly\ClrAssembly.csproj">
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-  </ItemGroup>
-
   <Target Name="CopyRowanTestFiles" AfterTargets="AfterBuild">
     <ItemGroup>
       <RowanTestFiles Include="..\DLR\bin\$(Configuration)\$(TargetFramework)\rowantest.*.dll" Condition=" '$(TargetFramework)' == 'net45' " />

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.352
+# Visual Studio Version 18
+VisualStudioVersion = 18.8.11925.187 insiders
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IronPython", "Src\IronPython\IronPython.csproj", "{95289EA9-5778-489D-AB48-F81F2CE2DA32}"
 EndProject
@@ -46,12 +46,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{17737ACB
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IronPythonCompiler", "Src\IronPythonCompiler\IronPythonCompiler.csproj", "{3DFB096E-AC09-4E7A-9288-7F7C33C288C7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLR", "DLR", "{AC38EFB1-820D-4E90-BF40-BEF3AC825542}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{60836ADE-CAB7-4587-B6FB-8C4FEB872752}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClrAssembly", "Src\DLR\Tests\ClrAssembly\ClrAssembly.csproj", "{BEE737B9-18D5-48D9-8672-9A896213C98B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Package", "Package", "{63388816-0ACA-4A18-A551-C3F93062C9E9}"
 EndProject
@@ -107,18 +101,12 @@ Global
 		{3DFB096E-AC09-4E7A-9288-7F7C33C288C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DFB096E-AC09-4E7A-9288-7F7C33C288C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DFB096E-AC09-4E7A-9288-7F7C33C288C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEE737B9-18D5-48D9-8672-9A896213C98B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEE737B9-18D5-48D9-8672-9A896213C98B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEE737B9-18D5-48D9-8672-9A896213C98B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEE737B9-18D5-48D9-8672-9A896213C98B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{17737ACB-40C6-41A6-83DA-3203A4DCEC19} = {3A14D070-628F-44EF-92DD-47C8BE5C33CD}
-		{60836ADE-CAB7-4587-B6FB-8C4FEB872752} = {AC38EFB1-820D-4E90-BF40-BEF3AC825542}
-		{BEE737B9-18D5-48D9-8672-9A896213C98B} = {60836ADE-CAB7-4587-B6FB-8C4FEB872752}
 		{63388816-0ACA-4A18-A551-C3F93062C9E9} = {3A14D070-628F-44EF-92DD-47C8BE5C33CD}
 		{FE37415E-C16C-4D03-B4AE-34D960A27730} = {63388816-0ACA-4A18-A551-C3F93062C9E9}
 	EndGlobalSection
