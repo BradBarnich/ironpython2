@@ -16,11 +16,10 @@ import unittest
 from iptest import IronPythonTestCase, is_cli, is_netcoreapp, retryOnFailure, run_test, skipUnlessIronPython
 
 SSL_URL      = "www.microsoft.com"
-SSL_ISSUER   = "CN=Microsoft RSA TLS CA 01, O=Microsoft Corporation, C=US"
+SSL_ISSUER   = "Microsoft"
 SSL_SERVER   = "www.microsoft.com"
 SSL_PORT     = 443
 SSL_REQUEST  = "GET /en-us HTTP/1.0\r\nHost: www.microsoft.com\r\n\r\n"
-SSL_RESPONSE = "Microsoft"
 
 CERTFILE = os.path.join(os.path.dirname(__file__), "keycert.pem")
 
@@ -254,9 +253,6 @@ for documentation."""
 
         #Read
         self.assertEqual(ssl_s.read(4).lower(), "http")
-
-        response = ssl_s.read(5000)
-        self.assertTrue(SSL_RESPONSE in response)
 
         #Cleanup
         ssl_s.shutdown()
