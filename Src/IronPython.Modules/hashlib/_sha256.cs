@@ -64,7 +64,7 @@ namespace IronPython.Modules {
             [Documentation("copy() -> object (copy of this object)")]
             public override HashBase<SHA256> copy() {
                 Sha256Object res = new Sha256Object();
-                res._hasher = CloneHasher();
+                res.CopyStateFrom(this);
                 return res;
             }
 
@@ -116,7 +116,7 @@ namespace IronPython.Modules {
             [Documentation("copy() -> object (copy of this object)")]
             public override HashBase<SHA224> copy() {
                 Sha224Object res = new Sha224Object();
-                res._hasher = CloneHasher();
+                res.CopyStateFrom(this);
                 return res;
             }
         }

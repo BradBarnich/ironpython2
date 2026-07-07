@@ -88,7 +88,7 @@ namespace IronPython.Modules {
             [Documentation("copy() -> object (copy of this md5 object)")]
             public override HashBase<SHA384> copy() {
                 Sha384Object res = new Sha384Object();
-                res._hasher = CloneHasher();
+                res.CopyStateFrom(this);
                 return res;
             }
         }
@@ -112,7 +112,7 @@ namespace IronPython.Modules {
             [Documentation("copy() -> object (copy of this md5 object)")]
             public override HashBase<SHA512> copy() {
                 Sha512Object res = new Sha512Object();
-                res._hasher = CloneHasher();
+                res.CopyStateFrom(this);
                 return res;
             }
         }        

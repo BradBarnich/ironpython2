@@ -76,7 +76,7 @@ namespace IronPython.Modules {
             [Documentation("copy() -> object (copy of this md5 object)")]
             public override HashBase<MD5> copy() {
                 MD5Object res = new MD5Object();
-                res._hasher = CloneHasher();
+                res.CopyStateFrom(this);
                 return res;
             }          
         }

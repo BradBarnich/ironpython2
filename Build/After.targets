@@ -4,8 +4,8 @@
     <When Condition=" '$(OutputType)' == 'Library' ">
       <ItemGroup>
         <StageItem Include="$(TargetPath)" />
-        <StageItem Include="$(DocumentationFile)" />
-        <StageItem Include="$(PdbFile)" />
+        <StageItem Include="$(DocumentationFile)" Condition=" '$(DocumentationFile)' != '' and Exists('$(DocumentationFile)') " />
+        <StageItem Include="$(PdbFile)" Condition=" '$(PdbFile)' != '' and Exists('$(PdbFile)') " />
         <StageItem Include="$(TargetDir)$(TargetName).xml" Condition=" Exists('$(TargetDir)$(TargetName).xml') " />
         <StageItem Include="$(TargetDir)$(TargetName).pdb" Condition=" Exists('$(TargetDir)$(TargetName).pdb') " />
       </ItemGroup>
@@ -39,11 +39,24 @@
           Outputs="$(UnsignedMainStaged)"
           Condition=" '$(Staging)' == 'true' ">
     <Error Text="StageDir is not set." Condition=" '$(StageDir)' == '' " />
-    <Copy SourceFiles="$(UnsignedItems)" DestinationFolder="$(MainStageDir)" />
+    <ItemGroup>
+      <MainStageExistingItem Include="@(StageItem)" Condition=" Exists('%(StageItem.FullPath)') " />
+    </ItemGroup>
+    <Copy SourceFiles="@(MainStageExistingItem)" DestinationFolder="$(MainStageDir)" />
   </Target>
 
   <Target Name="_StoreInDLLs" Condition=" '$(StoreInDLLs)' == 'true' ">
-    <Move SourceFiles="@(StageItem)" DestinationFolder="$(TargetDir)\%(StageItem.RecursiveDir)\DLLs" />
+    <ItemGroup>
+      <StoreInDllsExistingItem Include="$(TargetPath)" Condition=" Exists('$(TargetPath)') " />
+      <StoreInDllsExistingItem Include="$(DocumentationFile)" Condition=" '$(DocumentationFile)' != '' and Exists('$(DocumentationFile)') " />
+      <StoreInDllsExistingItem Include="$(PdbFile)" Condition=" '$(PdbFile)' != '' and Exists('$(PdbFile)') " />
+      <StoreInDllsExistingItem Include="$(TargetDir)$(TargetName).xml" Condition=" Exists('$(TargetDir)$(TargetName).xml') " />
+      <StoreInDllsExistingItem Include="$(TargetDir)$(TargetName).pdb" Condition=" Exists('$(TargetDir)$(TargetName).pdb') " />
+    </ItemGroup>
+    <RemoveDuplicates Inputs="@(StoreInDllsExistingItem)">
+      <Output TaskParameter="Filtered" ItemName="UniqueStoreInDllsItem" />
+    </RemoveDuplicates>
+    <Move SourceFiles="@(UniqueStoreInDllsItem)" DestinationFolder="$(TargetDir)\%(UniqueStoreInDllsItem.RecursiveDir)\DLLs" />
   </Target>
 
   <Target Name="Stage" DependsOnTargets="_LateStage;_MainStage;_StoreInDLLs" />
