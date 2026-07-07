@@ -499,13 +499,13 @@ class StrFormatTest(IronPythonTestCase):
                 (10e667/10e667,    '',         'nan'),
                 ]
 
-        upper_spec_trans = str.maketrans({"f": "F", "e": "E", "g": "G"})
+        upper_spec_trans = {"f": "F", "e": "E", "g": "G"}
 
         for value, spec, result in tests:
             self.assertEqual(value.__format__(spec), result)
 
         # upper-case version
-        upper_spec = spec.translate(upper_spec_trans)
+        upper_spec = ''.join(upper_spec_trans.get(c, c) for c in spec)
         if spec != upper_spec:
             actual = value.__format__(upper_spec)
             result = result.upper()
