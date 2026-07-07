@@ -1,11 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net45</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\IronPython\IronPython.csproj" />
+    <ProjectReference Include="..\IronPython.Modules\IronPython.Modules.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(IsFullFramework)' == 'true' ">
